@@ -1,0 +1,105 @@
+﻿@model IEnumerable<CRMSystem.Models.Criminal>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Criminal List </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-action="CriminalReportDownload" asp-controller="Reports" class="btn btn-primary">Download Criminal Report</a>
+           @* <a asp-controller="Criminal" asp-action="Create" class="btn btn-primary">
+                <i class="accordion-button"></i> &nbsp; Download
+            </a>*@
+        </div>
+    </div>
+    <br /><br /><br />
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Firat Name </th>
+                <th> LastName </th>
+                <th> Mobile Number</th>
+                <th> Age </th>
+                <th> LocationOfIncident</th>
+                <th> DateTimeReported </th>
+                <th>IncidentDateTime</th>
+                <th>TypeOfIncident</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="50%">
+                        @obj.FirstName
+                    </td>
+                    <td width="30%">
+                        @obj.LastName
+                    </td>
+                    <td width="50%">
+                        @obj.ContactNumber
+                    </td>
+                    <td width="30%">
+                        @obj.Age
+                    </td>
+                    <td width="30%">
+                        @obj.LocationOfIncident
+                    </td>
+                    <td width="30%">
+                        @obj.DateTimeReported
+                    </td>
+                    <td width="30%">
+                     @obj.IncidentDateTime
+                    </td>
+                    <td width="30%">
+                        @obj.TypeOfIncident
+                    </td>
+
+                  
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <canvas id="myChart"></canvas>
+
+<script>
+    var labels = [];
+    var data = [];
+
+    @foreach (var criminal in Model)
+    {
+        <text>labels.push('@criminal.LocationOfIncident');</text>
+        <text>data.push('@criminal.TypeOfIncident');</text>
+    }
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Crimes By Areas',
+                data: data,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+</div>
+
+

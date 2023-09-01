@@ -1,0 +1,74 @@
+﻿@model CRMSystem.Models.Criminal
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class=text-primary>Create Criminal</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Age"></label>
+            <input asp-for="Age" class="form-control" />
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Address"></label>
+            <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ContactNumber"></label>
+            <input asp-for="ContactNumber" class="form-control" />
+            <span asp-validation-for="ContactNumber" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="LocationOfIncident"></label>
+            <input asp-for="LocationOfIncident" class="form-control" />
+            <span asp-validation-for="LocationOfIncident" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="TypeOfIncident"></label>
+            <input asp-for="TypeOfIncident" class="form-control" />
+            <span asp-validation-for="TypeOfIncident" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="IncidentDateTime"></label>
+            <input asp-for="IncidentDateTime" class="form-control" />
+            <span asp-validation-for="IncidentDateTime" class="text-danger"></span>
+        </div>
+       
+        <div class="mb-3">
+            <label asp-for="DateTimeReported"></label>
+            <input asp-for="DateTimeReported" class="form-control" />
+            <span asp-validation-for="DateTimeReported" class="text-danger"></span>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="Criminal" asp-action="Index" class="btn btn-primary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}
